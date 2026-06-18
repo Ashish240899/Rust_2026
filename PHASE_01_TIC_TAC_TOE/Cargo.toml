@@ -1,0 +1,6 @@
+[package]
+name = "P1_4_Tick_Tack_Toe"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
