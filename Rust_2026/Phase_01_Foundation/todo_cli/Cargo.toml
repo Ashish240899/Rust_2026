@@ -1,6 +1,0 @@
-[package]
-name = "P_1_2_to_Do_List"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
