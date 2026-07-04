@@ -104,10 +104,10 @@ fn print_pro(ttt:&[[&str;3];3],current_player:&str,p1:(usize,usize),p2:(usize,us
     {
         println!("\nPlayer {} you won the game\n\n\n\n","O".green());
     }
-    println!("|----|-----|----|");
+    println!("|-----|-----|-----|");
     for r in 0..3
     {
-        print!("|");
+        print!("| ");
         for c in 0..3
         {
             if (r,c)==p1||(r,c)==p2||(r,c)==p3
@@ -131,12 +131,12 @@ fn print_pro(ttt:&[[&str;3];3],current_player:&str,p1:(usize,usize),p2:(usize,us
             }
 
         }
-        println!("|");
+        println!(" |");
         if r<2
         {
-            println!("|----|-----|----|");
+            println!("|-----|-----|-----|");
         }
     }
-    println!("|----|-----|----|");
+    println!("|-----|-----|-----|");
     println!("\n\n\n\n\n\n\n\n\n\n");
 }
