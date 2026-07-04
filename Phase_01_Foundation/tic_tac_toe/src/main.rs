@@ -1,81 +1,144 @@
 use std::io;
+use colored::Colorize;
 fn main()
 {
-    let mut board:[[char;3];3]=[['1','2','3'],['4','5','6'],['7','8','9']];
-    let mut won=false;
-    let mut current_player='X';
-    let mut input=String::new();
-    let mut step=0;
-    println!("\n---<<>> WELCOME TO TIK TAK TO CREATED BY ASHISH <<>>---\n");
+    let mut ttt=[["1","2","3"],["4","5","6"],["7","8","9"]];
+    let mut choice=String::new();
+    let mut step=1;
+    let mut current_player="X";
     loop
     {
-        for i in 0..=2
+        println!("\n\n");
+         for i in 0..3
+    {
+        println!(" {} | {} | {} ",ttt[i][0],ttt[i][1],ttt[i][2]);
+        if i<3
         {
-            println!(" {} | {} | {} ",board[i][0],board[i][1],board[i][2]);
-            if i<2
-            {
-                println!("---|---|---");
-            }
+            println!("---|---|---");
         }
-        println!("\nplayer {} choice your box 1-9 :",current_player);
-        input.clear();
-        io::stdin().read_line(&mut input).unwrap();
-        let input:usize= match input.trim().parse()
+    }
+        println!("\n\n");
+        println!("Player {} enter your task[1-9]:",current_player);
+        choice.clear();
+        io::stdin().read_line(&mut choice).unwrap();
+        let choice:usize=match choice.trim().parse::<usize>()
         {
-            Ok(no) if no>=1&&no<=9=>no,
+            Ok(num) if num>=1&&num<=9 => num,
             _=>
-            {
-                println!("error: choice only box 1-9!");
+            { 
+                println!("Please enter a Digit[1-9]");
                 continue;
             }
         };
-        let row=(input-1)/3;
-        let col=(input-1)%3;
-        if board[row][col]=='X'||board[row][col]=='O'
+        let row=(choice-1)/3;
+        let col=(choice-1)%3;
+        if ttt[row][col]=="X"||ttt[row][col]=="O"
         {
-            println!("error: this box is already full choice anather box!");
+            println!("\nThis is already filled");
             continue;
         }
-        board[row][col]=current_player;
-        for i in 0..=2
+        else
         {
-            if board[i][0]==current_player&&board[i][1]==current_player&&board[i][2]==current_player
-            {
-                won=true;
-            }
-            if board[0][i]==current_player&&board[1][i]==current_player&&board[2][i]==current_player
-            {
-                won=true;
-            }
+            ttt[row][col]=current_player;
+            step+=1;
         }
-        if board[0][0]==current_player&&board[1][1]==current_player&&board[2][2]==current_player
+        if ttt[0][0]==current_player&&ttt[0][1]==current_player&&ttt[0][2]==current_player
         {
-            won=true;
+                println!("\n\n\n\n\nPlayer {} You Win It. Game is Over!\n",current_player);
+                println!(" {} | {} | {} ",ttt[0][0].red(),ttt[0][1].red(),ttt[0][2].red());
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[1][0],ttt[1][1],ttt[1][2]);
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[2][0],ttt[2][1],ttt[2][2]);
+                println!("\n\n");
+                break;
         }
-        if board[2][0]==current_player&&board[1][1]==current_player&&board[0][2]==current_player
+        if ttt[1][0]==current_player&&ttt[1][1]==current_player&&ttt[1][2]==current_player
         {
-            won=true;
+                println!("\n\n\n\n\nPlayer {} You Win It. Game is Over!\n",current_player);
+                println!(" {} | {} | {} ",ttt[0][0],ttt[0][1],ttt[0][2]);
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[1][0].red(),ttt[1][1].red(),ttt[1][2].red());
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[2][0],ttt[2][1],ttt[2][2]);
+                println!("\n\n");
+                break; 
         }
-        if won==true
+        if ttt[2][0]==current_player&&ttt[2][1]==current_player&&ttt[2][2]==current_player
         {
-            println!("\nsuccessfull: congratulation player {} you won the game !\n\n",current_player);
-            for i in 0..=2
-            {
-                println!(" {} | {} | {} ",board[i][0],board[i][1],board[i][2]);
-                if i<2
-                {
-                    println!("---|---|---");
-                }
+                println!("\n\n\n\n\nPlayer {} You Win It. Game is Over!\n",current_player);
+                println!(" {} | {} | {} ",ttt[0][0],ttt[0][1],ttt[0][2]);
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[1][0],ttt[1][1],ttt[1][2]);
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[2][0].red(),ttt[2][1].red(),ttt[2][2].red());
+                println!("\n\n");
+                break;
+        }
+
+        if ttt[0][0]==current_player&&ttt[1][1]==current_player&&ttt[2][2]==current_player
+        {
+                println!("\n\n\n\n\nPlayer {} You Win It. Game is Over!\n",current_player);
+                println!(" {} | {} | {} ",ttt[0][0].red(),ttt[0][1],ttt[0][2]);
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[1][0],ttt[1][1].red(),ttt[1][2]);
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[2][0],ttt[2][1],ttt[2][2].red());
+                println!("\n\n");
+                break;
             }
-            println!("\n\n");
+        if ttt[0][0]==current_player&&ttt[1][0]==current_player&&ttt[2][0]==current_player
+        {     
+                println!("\n\n\n\n\nPlayer {} You Win It. Game is Over!\n",current_player);
+                println!(" {} | {} | {} ",ttt[0][0].red(),ttt[0][1],ttt[0][2]);
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[1][0].red(),ttt[1][1],ttt[1][2]);
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[2][0].red(),ttt[2][1],ttt[2][2]);
+                println!("\n\n");
+                break;
+        }
+          if ttt[0][1]==current_player&&ttt[1][1]==current_player&&ttt[2][1]==current_player
+          {     
+                println!("\n\n\n\n\nPlayer {} You Win It. Game is Over!\n",current_player);
+                println!(" {} | {} | {} ",ttt[0][0],ttt[0][1].red(),ttt[0][2]);
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[1][0],ttt[1][1].red(),ttt[1][2]);
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[2][0],ttt[2][1].red(),ttt[2][2]);
+                println!("\n\n");
+                break;
+          }
+          if ttt[0][2]==current_player&&ttt[1][2]==current_player&&ttt[2][2]==current_player
+          {     
+                println!("\n\n\n\n\nPlayer {} You Win It. Game is Over!\n",current_player);
+                println!(" {} | {} | {} ",ttt[0][0],ttt[0][1],ttt[0][2].red());
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[1][0],ttt[1][1],ttt[1][2].red());
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[2][0],ttt[2][1],ttt[2][2].red());
+                println!("\n\n");
+                println!("\n\n");
+                break;
+          }
+        if ttt[0][2]==current_player&&ttt[1][1]==current_player&&ttt[2][0]==current_player
+        {      
+                println!("\n\n\n\n\nPlayer {} You Win It. Game is Over!\n",current_player);
+                println!("\n\n\n\n\nPlayer {} You Win It. Game is Over!\n",current_player);
+                println!(" {} | {} | {} ",ttt[0][0],ttt[0][1],ttt[0][2].red());
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[1][0],ttt[1][1].red(),ttt[1][2]);
+                println!("---|---|---");
+                println!(" {} | {} | {} ",ttt[2][0].red(),ttt[2][1],ttt[2][2]);
+                println!("\n\n");
+                break;
+        }
+         if step==9
+        {
+            println!("Game is Draw no one Wins");
             break;
         }
-        step+=1;
-        if step==9
-        {
-            println!("error: no one wins! the game is draw!");
-            break;
-        }
-        current_player=if current_player=='X'{'O'} else {'X'};
+        current_player=if current_player=="X"{"O"}else{"X"};
     }
 }
+
