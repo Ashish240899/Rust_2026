@@ -1,23 +1,10 @@
-# 📝 Rust CLI To-Do App (Crash-Proof)
+# 📝 To-Do CLI (Rust)
+## Phase 01: Foundation
 
-A fast, dynamic, and memory-safe Command Line Interface (CLI) To-Do List application built in Rust. This is Phase 1 of my hardcore Rust Backend Development portfolio.
+A 100% memory-safe, colorized terminal To-Do list application built in Rust using dynamic Vectors.
 
-## 🧠 Core Architecture
-This project demonstrates dynamic memory allocation and robust state management:
-* **Dynamic Vectors (`Vec<String>`):** Utilized Rust's heap-allocated Vector to dynamically grow and shrink the task list in real-time.
-* **Iterators & Enumerate (`.iter().enumerate()`):** Cleanly mapped indices to tasks for a user-friendly UI experience.
-* **Index Guard & Bounds Checking:** Protected the `.remove()` method with strict logical boundaries (`> 0 && <= len`) to prevent Out-Of-Bounds memory panics.
-* **Crash-Proof Parsing:** Engineered a `match` expression on input parsing to gracefully catch `Err` strings and loop back using `continue` instead of crashing.
-* **Graceful Exit:** Replaced abrupt panics with a safe `break` logic for a clean program termination.
-
-## 💻 Tech Stack
-* **Language:** Rust
-* **Development Environment:** Windows 11 Pro, Visual Studio Code
-
-## 🚀 How to Run
-1. Clone this repository to your local machine.
-2. Open the terminal and navigate to the project directory.
-3. Run the following command:
-   ```bash
-   cargo run
-   
+### 🛠️ Core Architecture & Traits
+* **Dynamic Data Structures:** Utilized Rust's `Vec<String>` for efficient heap-allocated task storage and dynamic resizing.
+* **Memory Safety:** Enforced strict index boundary checks (`delete > 0 && delete <= to_do.len()`) to prevent Out-Of-Bounds panics during task removal.
+* **Error Handling:** Leveraged `match` with `parse::<usize>()` to cleanly trap and handle invalid non-integer inputs.
+* **UI/UX:** Integrated the `colored` crate for an intuitive, hacker-style terminal interface.
