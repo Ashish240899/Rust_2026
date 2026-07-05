@@ -1,5 +1,6 @@
 #[allow(dead_code)]
 use std::io;
+use colored::Colorize;
 enum Operation
 {
     Add,Sub,Mul,Div
@@ -28,7 +29,7 @@ fn calculate(c:Calculator)->f64
         {
             if c.num2==0.0
             {
-                println!("error:second number should not be zero!");
+                println!("\n{}","Error: Second Number is 0".red().bold());
                 return 0.0
             }
             else
@@ -40,31 +41,36 @@ fn calculate(c:Calculator)->f64
 }
 fn main()
 {
-    println!("\n---------WELCOME TO MY FIRST PROJECT CALCULATOR---------\nPlease enter first number:");
+    println!("\n               [ {} ]","Welcome To CLI Calculator For Simple Calculation.".green().bold());
+    println!("\n                              [ {} ]","Enter First Number".green().bold());
     let mut a=String::new();
     io::stdin().read_line(&mut a).unwrap();
-    println!("\nPlease enter second number:");
-    let mut b=String::new();
-    io::stdin().read_line(&mut b).unwrap();
     let number1:f64=match a.trim().parse()
     {
         Ok(num)=>num,
         Err(_)=>
         {
-            println!("error:enter only numerical values!");
+            println!("\n{}","Error: Invalid First Number ".red().bold());
             return;
         }
     };
+    println!("\n                              [ {} ]","Enter Second Number ".green().bold());
+    let mut b=String::new();
+    io::stdin().read_line(&mut b).unwrap();
     let number2:f64=match b.trim().parse()
     {
         Ok(num)=>num,
         Err(_)=>
         {
-            println!("error:enter only numerical values!");
+            println!("\n{}","Error: Invalid Second Number".red().bold());
             return;
         }
     };
-    println!("\nPlease enter below OPERATIONS\nType + or Add for ADDITION\nType - or Sub for SUBSTRACTION\nType * or Mul for MULTIPLICATION\nType / or Div for DIVISION\n");
+    println!("\n                                   [ {} ]","OPERATION".green().bold());
+    println!("\n                                  [ {} ]","[+] Add (+)".red().bold());
+    println!("\n                                  [ {} ]","[-] Sub (-)".red().bold());
+    println!("\n                                  [ {} ]","[*] Mul (*)".red().bold());
+    println!("\n                                  [ {} ]","[/] Div (/)".red().bold());
     let mut choice=String::new();
     io::stdin().read_line(&mut choice).unwrap();
     let string1=choice.trim();
@@ -88,7 +94,7 @@ fn main()
         }
         _ =>
         {
-            println!("\nOPPS WRONG CHOICE!!\nPlease enter RIGHT ONCES");
+            println!("\n{}","Error: Invalid OPERATION".red().bold());
             return;
         }
     };
@@ -97,5 +103,6 @@ fn main()
         num1:number1,num2:number2,op:operation
     };
     let result=calculate(c1);
-    println!("\nResult ={}",result);
+    let result:String=result.to_string();
+    println!("\n                                   =={}",result.green().bold());
 }
