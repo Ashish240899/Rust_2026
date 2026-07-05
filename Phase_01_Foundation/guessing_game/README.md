@@ -1,23 +1,10 @@
-# 🎯 Rust CLI Guessing Game (Crash-Proof)
+# 🎯 CLI Guessing Game (Rust)
+## Phase 01: Foundation
 
-An interactive, robust, and memory-safe Command Line Interface (CLI) Guessing Game built entirely in Rust. This is Phase 1 of my hardcore Rust Backend Development portfolio.
+An advanced, memory-safe number guessing game featuring dynamic difficulty levels and idiomatic Rust architecture.
 
-## 🧠 Core Architecture
-This project demonstrates control flow and error handling at a production level:
-* **Random Number Generation (`rand` crate):** Utilizing external crates to securely generate random numbers.
-* **Infinite Game Loop (`loop`):** Keeps the game running until the precise winning condition is met.
-* **Strict Type Casting & Shadowing:** Converting String inputs into `u32` integers safely using variable shadowing.
-* **Pattern Matching (`match` & `Ordering`):** Used to compare variables (`Less`, `Greater`, `Equal`) efficiently.
-* **Crash-Proof Input Validation:** Implemented `match` on `.parse()` with a `continue` statement to gracefully catch non-numerical inputs without exiting the game loop.
-
-## 💻 Tech Stack
-* **Language:** Rust
-* **Development Environment:** Windows 11 Pro, Visual Studio Code
-
-## 🚀 How to Run
-1. Clone this repository to your local machine.
-2. Open the terminal and navigate to the project directory.
-3. Run the following command:
-   ```bash
-   cargo run
-   
+### 🛠️ Core Architecture & Traits
+* **Modular Design:** Segregated menu routing (`main`) and core game loop (`get_guess`) for maximum code reusability.
+* **Idiomatic Control Flow:** Implemented `std::cmp::Ordering` with `match` for highly optimized, exhaustive number comparisons.
+* **Dynamic Boundaries:** RNG (Random Number Generator) scales dynamically based on user-selected difficulty thresholds (50, 100, 1000).
+* **Bulletproof Inputs:** Strict pattern matching and mathematical boundary checking to trap out-of-range anomalies and non-integer crashes.
