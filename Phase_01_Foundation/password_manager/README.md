@@ -1,9 +1,9 @@
-# 🔐 CLI Password Manager (Rust)
+# 🔐 CLI Password Manager V2.0 (Rust)
 ## Phase 02: Advanced Backend Basics
 
-An enterprise-grade, memory-safe CLI Password Manager engineered with micro-optimized input evaluation.
+An interactive, memory-safe Command Line Interface (CLI) Password Manager featuring complete CRUD operations.
 
 ### 🛠️ Core Architecture & Traits
-* **Zero-Allocation Evaluation:** Utilized the logical OR (`||`) operator to evaluate conditional branches directly on borrowed string slices (`&str`), completely eliminating redundant heap re-allocations typically introduced by mutation methods like `.to_lowercase()`.
-* **Input Sanitization:** Enforced strict `.trim()` processing to strip whitespace anomalies from standard input (`stdin`) streams, ensuring reliable data tracking.
-* **Scalable Control Flow:** Architected an optimized branch condition matrix, laying the structural groundwork for subsequent Phase 02 expansions including persistent file I/O, encryption crates, and smart pointer data wrappers.
+* **Dynamic State Management:** Utilized standard library `Vec<String>` for dynamic heap allocation of IDs and Credentials.
+* **Memory-Safe Error Handling:** Implemented `match` control flow for `Result` (parsing user inputs) and `Option` (searching vector indices), ensuring a zero-panic runtime.
+* **CRUD Implementation:** Engineered full Create, Read, Update, and Delete functionalities using iterative closures (`.iter().position()`) and safe index removal (`.remove()`).
