@@ -13,11 +13,11 @@ fn main()
         println!("Browser reqwested={}",text);
         if text.contains("GET / HTTP/1.1")
         {
-        connect.write_all("HTTP/1.1 200 OK\r\n\r\n\r\n<h1>Web server is connected and running now on this browser<br>Connection status: Successfull<br>Server owner:Ashish(The Rust MasterMind)<br>Source language:Rust(The Giant)<br>Project no.:My first web PROJECT<br>(Meri Jingadi Ab Shuru Ho Gayi Hai)<h1>".as_bytes()).expect("Failed to response!");
+        connect.write_all("HTTP/1.1 200 OK\r\n\r\n\r\n<p>Web server is connected and running now on this browser<br>Connection status: Successfull<br>Server owner:Ashish(The Rust MasterMind)<br>Source language:Rust(The Giant)<br>Project no.:My first web PROJECT<br>(Meri Jingadi Ab Shuru Ho Gayi Hai)</p>".as_bytes()).expect("Failed to response!");
     }
         else
         {
-            connect.write_all("HTTP/1.1 404 NOT FOUND\r\n\r\n<h1>404 Page not found!!!<h1>".as_bytes()).expect("Fail to response!");
+            connect.write_all("HTTP/1.1 404 NOT FOUND\r\n\r\n<p>404 Page not found!!!</p>".as_bytes()).expect("Fail to response!");
         }
             connect.flush().expect("Failed to flush!");
     }
