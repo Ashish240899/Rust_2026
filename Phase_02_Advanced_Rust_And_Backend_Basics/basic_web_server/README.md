@@ -1,16 +1,19 @@
-# 🕸️ Basic HTTP Web Server (Rust)
+# 🕸️ Advanced HTTP Web Server (Rust) - Phase 02
 
 ## 📌 Project Overview
-A fully functional, low-level, zero-dependency HTTP Web Server built entirely from scratch using Rust's standard library (`std::net`). This project demonstrates how computers communicate over the internet at the foundational TCP/IP level, completely bypassing modern high-level frameworks.
+An upgraded, low-level HTTP Web Server built entirely with Rust's `std::net`. This version introduces custom **Routing** and **Logging** mechanisms directly from scratch, intercepting raw TCP byte streams and decoding browser signatures without relying on any external frameworks.
 
 ## ⚙️ Core Architecture & Tech Stack
-* **Language:** Rust
-* **Network Protocol:** Transmission Control Protocol (TCP) via `TcpListener` & `TcpStream`.
-* **Data Flow:** Captures incoming browser requests into a 1024-byte memory `buffer`, processes the raw bytes, and flushes a valid `HTTP/1.1 200 OK` response directly to the client socket.
-* **Resilience:** Implemented strict error handling (`.expect()`) at every point of failure (Port Binding, Connection Acceptance, Data Reading, and Stream Flushing) to prevent server panics.
+* **Language:** Rust (The Giant)
+* **Routing Engine:** Implemented strict HTTP GET request parsing (`GET / HTTP/1.1`) to serve 200 OK responses, and a robust fallback to generate `404 NOT FOUND` headers for invalid endpoints.
+* **Logging System:** Real-time decoding of incoming browser requests to monitor User-Agent, OS, and client metadata directly in the terminal.
+* **Memory Safety & Crash-Proofing:** Utilized `String::from_utf8_lossy()` to gracefully handle malformed TCP byte streams without panicking the server. 
+* **Borrowing Rules:** Strict ownership enforced using slice references `&buffer[..]` combined with `.to_string()` for zero-cost data decoding and memory isolation.
 
 ## 💻 Usage
 ```bash
 cargo run
-# The server will bind to port 8080.
-# Open Google Chrome and navigate to [http://127.0.0.1:8080](http://127.0.0.1:8080) to see the live rendering.
+# The server will bind to 127.0.0.1:8080.
+# 1. Check the terminal for live HTTP request logs (CCTV).
+# 2. Visit [http://127.0.0.1:8080](http://127.0.0.1:8080) to test the 200 OK Home Page.
+# 3. Visit [http://127.0.0.1:8080/hacker](http://127.0.0.1:8080/hacker) to test the strict 404 Router fallback.
