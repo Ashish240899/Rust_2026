@@ -3,7 +3,7 @@ use std::io::prelude::*;
 fn main()
 {
     let server=TcpListener::bind("127.0.0.1:8080").unwrap();
-    println!("boom server is conneted and LIVE on https://127.0.0.1:8080");
+    println!("Boom server is conneted and LIVE on https://127.0.0.1:8080");
     for connection in server.incoming()
     {
         let mut connect=connection.unwrap();
@@ -13,14 +13,14 @@ fn main()
         if user_info.contains("GET / HTTP/1.1")
         {
              let html_form="HTTP/1.1 200 OK\r\ncontent-type:text/html;charset=utf-8\r\n\r\n
-             <h3>Welcome to online calculator</h2><form action='/' method='GET'>
-             <input type='text' name='n1' placeholder='number 1'>
-             <input type='text' name='n2' placeholder='number 2'>
+             <h3>Online Calculator</h2><form action='/' method='GET'>
+             <input type='text' name='n1' placeholder='1st DIGIT'>
+             <input type='text' name='n2' placeholder='2nd DIGIT'>
              <br><br>
-             <button type='submit' name='op' value='add'> + </button>
-             <button type='submit' name='op' value='sub'> - </button>
-             <button type='submit' name='op' value='mul'> * </button>
-             <button type='submit' name='op' value='div'> / </button>
+             <button type='submit' name='op' value='add'> ADDITION </button>
+             <button type='submit' name='op' value='sub'> SUBSTRACTION </button>
+             <button type='submit' name='op' value='mul'> MULTIPLICATION </button>
+             <button type='submit' name='op' value='div'> DIVISION </button>
              </form>";
              connect.write_all(html_form.as_bytes()).unwrap();
         }
@@ -39,20 +39,20 @@ fn main()
             {
                 "add"=>
                 {
-            let result=format!("={}",n1+n2);
-            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h2>after addition result is as below</h2><br><h3>{}</h3><a href='/'>go back</a>",result);
+            let result=format!("{}",n1+n2);
+            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>RESULT={}</h3><a href='/'>go back</a>",result);
             connect.write_all(r.as_bytes()).unwrap();
                 },
                 "sub"=>
                 {
-                    let result=format!("={}",n1-n2);
-            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h2>after substraction result is as below</h2><br><h3>{}</h3><a href='/'>go back</a>",result);
+                    let result=format!("{}",n1-n2);
+            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>RESULT={}</h3><a href='/'>go back</a>",result);
             connect.write_all(r.as_bytes()).unwrap();
                 },
                 "mul"=>
                 {
-                    let result=format!("={}",n1*n2);
-            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h2>after multiplication result is as below</h2><br><h3>{}</h3><a href='/'>go back</a>",result);
+                    let result=format!("{}",n1*n2);
+            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>RESULT={}</h3><a href='/'>go back</a>",result);
             connect.write_all(r.as_bytes()).unwrap();
                 },
                 "div"=>
@@ -64,8 +64,8 @@ fn main()
                     }
                     else
                     {
-                    let result=format!("={}",n1/n2);
-            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h2>after division result is as below</h2><br><h3>{}</h3><a href='/'>go back</a>",result);
+                    let result=format!("{}",n1/n2);
+            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>RESULT={}</h3><a href='/'>go back</a>",result);
             connect.write_all(r.as_bytes()).unwrap();
                     }
                 }
