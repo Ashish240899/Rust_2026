@@ -13,7 +13,7 @@ fn main()
         println!("\nBrowser Requested: {}", text);
         if text.contains("GET / HTTP/1.1") 
         {
-            let form_html = "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<h2>Dynamic Math Engine ⚙️</h2><form action='/' method='GET'><input type='text' name='num' placeholder='Enter a number...'><input type='submit' value='Generate Table'></form>";
+            let form_html="HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<h2>Dynamic Math Engine 🚀</h2><form action='/' method='GET'><input type='text' name='num' placeholder='Enter a number...'><input type='submit' value='Generate Table'></form>";
             connect.write_all(form_html.as_bytes()).expect("Error sending form");
         } 
         else if text.contains("GET /?num=") 
@@ -31,7 +31,7 @@ fn main()
                 let mut table_data = String::new();
                 for i in 1..=10 
                 {
-                    let row = format!("{} x {} = {}<br>", final_number, i, final_number * i);
+                    let row = format!("{}<br>", final_number, i, final_number * i);
                     table_data.push_str(&row);
                 }
                 let dynamic_response = format!("HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<h2>Table of {} 🚀</h2>{}<br><a href='/'>Go Back</a>", final_number, table_data);
