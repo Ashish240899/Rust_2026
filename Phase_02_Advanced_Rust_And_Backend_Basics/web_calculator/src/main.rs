@@ -13,16 +13,16 @@ fn main()
         if user_info.contains("GET / HTTP/1.1")
         {
              let html_form="HTTP/1.1 200 OK\r\ncontent-type:text/html;charset=utf-8\r\n\r\n
-             <h3>Online Calculator</h2><form action='/' method='GET'>
-             <input type='text' name='n1' placeholder='1st DIGIT'>
-             <input type='text' name='n2' placeholder='2nd DIGIT'>
+             <h3>Ⓞⓝⓛⓘⓝⓔ Ⓒⓐⓛⓒⓤⓛⓐⓣⓞⓡ 🔢➕➖✖️➗= </h2><form action='/' method='GET'>
+             <input type='text' name='n1' placeholder='【1】'>
+             <input type='text' name='n2' placeholder='【2】'>
              <br><br>
-             <button type='submit' name='op' value='add'> ADDITION </button>
-             <button type='submit' name='op' value='sub'> SUBSTRACTION </button>
-             <button type='submit' name='op' value='mul'> MULTIPLICATION </button>
-             <button type='submit' name='op' value='div'> DIVISION </button>
-             <button type='submit' name='op' value='rem'> REMINDER </button>
-             <button type='submit' name='op' value='pow'> POWER </button>
+             <button type='submit' name='op' value='add'> ➕ </button>
+             <button type='submit' name='op' value='sub'> ➖ </button>
+             <button type='submit' name='op' value='mul'> ✖️ </button>
+             <button type='submit' name='op' value='div'> ➗ </button>
+             <button type='submit' name='op' value='rem'> ％ </button>
+             <button type='submit' name='op' value='pow'> xʸ </button>
              </form>";
              connect.write_all(html_form.as_bytes()).expect("Error while responding!");
         }
@@ -42,19 +42,19 @@ fn main()
                 "add"=>
                 {
             let result=format!("{}",n1+n2);
-            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>RESULT={}</h3><a href='/'>go back</a>",result);
+            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>➡️={}</h3><a href='/'>go back</a>",result);
             connect.write_all(r.as_bytes()).expect("Error while responding!");
                 },
                 "sub"=>
                 {
                     let result=format!("{}",n1-n2);
-            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>RESULT={}</h3><a href='/'>go back</a>",result);
+            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>➡️={}</h3><a href='/'>go back</a>",result);
             connect.write_all(r.as_bytes()).expect("Error while responding!");
                 },
                 "mul"=>
                 {
                     let result=format!("{}",n1*n2);
-            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>RESULT={}</h3><a href='/'>go back</a>",result);
+            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>➡️={}</h3><a href='/'>go back</a>",result);
             connect.write_all(r.as_bytes()).expect("Error while responding!");
                 },
                 "div"=>
@@ -67,24 +67,29 @@ fn main()
                     else
                     {
                     let result=format!("{}",n1/n2);
-            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>RESULT={}</h3><a href='/'>go back</a>",result);
+            let r=format!("HTTP/1.1 200 OK\r\ncontent-type:text/html; charset=utf-8\r\n\r\n<h3>➡️={}</h3><a href='/'>go back</a>",result);
             connect.write_all(r.as_bytes()).expect("Error while responding!");
                     }
                 }
                 "pow"=>
                 {
-                    let nn1:u32=n1 as u32;
-                    let nn2:u32=n2 as u32;
-                    let r=format!("{}",nn1.pow(nn2));
-                    let res=format!("HTTP/1.1\r\ncontent-type:text/html;charset=utf-8\r\n\r\n<h3>RESULT={}</h3><a href='/'>go back</a>",r);
+                    let r=format!("{}",n1.powf(n2));
+                    let res=format!("HTTP/1.1\r\ncontent-type:text/html;charset=utf-8\r\n\r\n<h3>➡️={}</h3><a href='/'>go back</a>",r);
                     connect.write_all(res.as_bytes()).expect("Error while responding!");
                 }
                  "rem"=>
                 {
+                    if n2==0.0
+                    {
+                        connect.write_all("HTTP/1.1 400 BAD REQUEST\r\ncontent-type:text/html;charset=utf-8\r\n\r\n<h2>second number if zero devision not possible</h2><a href='/'>go back</a>".as_bytes()).expect("failure to response");
+                    }
+                    else
+                    {
                     let r=format!("{}",n1%n2);
-                    let res=format!("HTTP/1.1\r\ncontent-type:text/html;charset=utf-8\r\n\r\n<h3>RESULT={}</h3><a href='/'>go back</a>",r);
+                    let res=format!("HTTP/1.1\r\ncontent-type:text/html;charset=utf-8\r\n\r\n<h3>➡️={}</h3><a href='/'>go back</a>",r);
                     connect.write_all(res.as_bytes()).expect("Error while responding!");
                 }
+            }
                 _ => 
                 {
             let r = "HTTP/1.1 400 BAD REQUEST\r\nContent-Type: text/html\r\n\r\n<h2>Invalid Operator!</h2><a href='/'>Go Back</a>";

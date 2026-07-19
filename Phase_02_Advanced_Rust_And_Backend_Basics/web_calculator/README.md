@@ -1,10 +1,19 @@
-# 🚀 Rust Web Calculator (Enterprise Edition)
+# 🚀 Pure Rust HTTP Web Calculator
 
-## 📌 Overview
-An advanced, memory-safe HTTP Web Calculator built entirely from scratch in Rust. This updated iteration replaces all fragile `.unwrap()` calls with strict `.expect()` error handling, ensuring robust terminal logging and zero silent panics.
+## 📌 Enterprise Blueprint
+A 100% dependency-free, memory-safe backend web server and HTTP parser built entirely from scratch using Rust's standard library (`std::net::TcpListener`). This project strictly avoids external frontend files, relying purely on raw Rust strings, Unicode, and backend rendering to maintain absolute focus on the core logic.
 
-## 🧠 Core Architecture & Upgrades
-* **Custom Error Handling:** Integrated `.expect()` across TCP listeners and byte readers to provide granular, developer-friendly crash reports.
-* **Advanced Math Engine:** Added modular arithmetic (Remainder) and Exponential (Power) operations.
-* **Hardcore Typecasting:** Implemented explicit casting (`n1 as i32`, `n2 as u32`) to satisfy Rust's strict `.pow()` trait requirements directly within the custom HTTP parser block.
-* **Crash-Proof Logic:** Sustains the `unwrap_or()` shield against invalid text inputs and URL manipulation.
+## 🧠 Core Architecture & Traits
+*   **Raw TCP Parsing:** Manually extracts query parameters (`n1`, `n2`, `op`) from raw HTTP GET requests.
+*   **Crash-Proof Engine:** Strict edge-case handling using `.unwrap_or()`. Prevents panic loops from invalid URL routing or empty parameters.
+*   **Zero-Division Shield:** Hardcoded logic to intercept and block `Division by Zero` and `Modulo by Zero` operations, returning a graceful `400 BAD REQUEST` instead of yielding `NaN` or panicking.
+*   **Dynamic UI Injection:** Renders an interactive, emoji-based HTML UI directly from the Rust format macro string.
+
+## ⚙️ The Math Engine (f64 Operations)
+Supports high-precision floating-point arithmetic:
+- Addition (`+`)
+- Subtraction (`-`)
+- Multiplication (`*`)
+- Division (`/`)
+- Remainder/Modulo (`%`)
+- Exponential Power (`xⁿ` using `.powf()`)
