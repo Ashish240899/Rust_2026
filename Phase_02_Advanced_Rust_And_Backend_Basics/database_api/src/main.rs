@@ -4,6 +4,7 @@ use serde_json;
 use std::io::{Read,Write};
 use std::net::TcpListener;
 use rusqlite::{Connection,params,Result};
+
 #[derive(Serialize)]
 struct User
 {
@@ -13,28 +14,78 @@ struct User
 }
 fn main()
 {
-    let db=Connection::open("users.db").unwrap();
+    let db=match Connection::open("users.db")
+    {
+        Ok(connection)=>connection,
+        Err(e)=>
+        {
+            println!("Server error :{}",e);
+            std::process::exit(1);
+        }
+    };
 
-    db.execute("create table if not exists users (id integer primary key,name text not null, role text not null)",[]).unwrap();
+   match db.execute("create table if not exists users (id integer primary key,name text not null, role text not null)",[])
+    {
+        Ok(_)=>(),
+        Err(e)=>
+        {
+            println!("Error accurred:{}",e);
+            std::process::exit(1);
+        }
+    }
 
-    db.execute("insert or ignore into users (id,name,role) values (?1,?2,?3)", params![1,"Ashish Khattry","RUST developer"]).unwrap();
-
-    let server=TcpListener::bind("127.0.0.1:8080").unwrap();
+    match db.execute("insert or ignore into users (id,name,role) values (?1,?2,?3)", params![1,"Ashish Khattry","RUST developer"]){
+        Ok(_)=>(),
+        Err(e)=>
+        {
+            println!("Error accured:{}",e);
+            std::process::exit(1);
+        }
+    };
+    let server=match TcpListener::bind("127.0.0.1:8080"){
+        Ok(port)=>port,
+        Err(e)=>
+        {
+            println!("Error accurred:{}",e);
+            std::process::exit(1);
+        }
+    };
 
     for connection in server.incoming()
     {
-        let mut connect=connection.unwrap();
+        let mut connect=match connection{
+        Ok(connect)=>connect,
+        Err(e)=>
+        {
+            println!("Error accurred:{}",e);
+            continue;
+        }
+    };
 
         let mut buffer=[0;1024];
 
-        connect.read(&mut buffer).unwrap();
+        match connect.read(&mut buffer){
+        Ok(_)=>(),
+        Err(e)=>
+        {
+            println!("Error accurred:{}",e);
+        continue;
+        }
+    };
 
         let user_info=String::from_utf8_lossy(&buffer);
 
         if user_info.contains("GET /users HTTP/1.1")
         {
 
-            let mut statement =db.prepare("select id, name, role from users").unwrap();
+            let mut statement =match db.prepare("select id, name, role from users"){
+        Ok(database)=>database,
+        Err(e)=>
+        {
+            println!("Error accurred:{}",e);
+            continue;
+        }
+    };
             let user_iterator=statement.query_map([],|row|
             {
                 Ok(User
@@ -43,20 +94,34 @@ fn main()
                 name:row.get(1)?,
                 role:row.get(2)?,
                     })
-            }).unwrap();
+            }).expect("error accurred");
 
             let mut user_list:Vec<User>=Vec::new();
 
             for user in user_iterator
             {
-                user_list.push(user.unwrap());
+                user_list.push(user.expect("error accurred"));
             }
 
-            let json_data=serde_json::to_string(&user_list).unwrap();
+            let json_data=match serde_json::to_string(&user_list){
+        Ok(data)=>data,
+        Err(e)=>
+        {
+            println!("Error accured:{}",e);
+            continue;
+        }
+    };
 
             let response=format!("HTTP/1.1 \r\ncontent-type:application/json; charset=utf-8\r\n\r\n{}",json_data);
 
-              connect.write_all(response.as_bytes()).unwrap();
+             match connect.write_all(response.as_bytes()){
+        Ok(_)=>(),
+        Err(e)=>
+        {
+            println!("Error accurred:{}",e);
+            continue;
+        }
+    };
         }
 
       
@@ -65,7 +130,14 @@ fn main()
         {
 
             let error_res="HTTP/1.1 \r\ncontent-type:application/json\r\n\r\n{\"error\":\"route not found\"}";
-            connect.write_all(error_res.as_bytes()).unwrap();
+            match connect.write_all(error_res.as_bytes()){
+        Ok(_)=>(),
+        Err(e)=>
+        {
+            println!("Error accured:{}",e);
+            continue;
+        }
+    };
         }
     }
 }
