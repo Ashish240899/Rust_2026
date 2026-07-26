@@ -1,4 +1,4 @@
-//print_vs_println
+//04_print_vs_println
 fn main()
 {
     print!("This is print macro!  ");

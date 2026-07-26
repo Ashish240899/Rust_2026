@@ -1,4 +1,4 @@
-//the_checkmate_command
+//06_the_checkmate_command
 fn main()
 {
     println!("This is a checkmate command program ");

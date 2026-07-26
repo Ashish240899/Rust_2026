@@ -1,4 +1,4 @@
-//the_ASCII_pyramind
+//08_the_ASCII_pyramind
 fn main()
 {
     println!("    *");
