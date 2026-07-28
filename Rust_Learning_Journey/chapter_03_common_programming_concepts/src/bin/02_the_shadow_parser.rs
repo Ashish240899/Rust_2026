@@ -5,6 +5,6 @@ fn main()
     println!("={data}");
     let data=data.trim();
     println!("={data}");
-    let data:u32=404;
+    let data:u32=data.trim().parse::<u32>().expect("Converting error!");
     println!("={data}");
 }
