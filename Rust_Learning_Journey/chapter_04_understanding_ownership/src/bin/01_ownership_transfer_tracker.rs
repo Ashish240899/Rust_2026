@@ -1,4 +1,4 @@
-//01_move_semantics
+//01_ownership_transfer_tracker
 fn main()
 {
     let s1=String::from("Farary");
