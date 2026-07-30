@@ -1,11 +1,18 @@
-//09_first_word_slicer
 fn main()
 {
-    let s1:String=String::from("India is independent on 15 august 1947!");
-    let s2=first_word(&s1);
-    println!("First string is ={s1}\nSecond string is ={s2}");
+    let s:String=String::from("Education makes you pefect");
+    let slice=first_word(&s);
+    println!("Full string ={s}\nSlice of this string ={slice}");
 }
-fn first_string(s1:& String)->&String
+fn first_word(s:&String)->&str
 {
-    for _ in s//bhi ye 9th program kaise banega isko jara batade
+    let bytes=s.as_bytes();
+    for (i,&item) in bytes.iter().enumerate()
+    {
+        if item==b' '
+        {
+            return &s[0..i]
+        }
+    }
+    &s[..]
 }
