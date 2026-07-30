@@ -3,7 +3,7 @@ use std::io;
 use colored::Colorize;
 enum Operation
 {
-    Add,Sub,Mul,Div
+    Add,Sub,Mul,Div,Rem
 }
 struct Calculator
 {
@@ -35,6 +35,18 @@ fn calculate(c:Calculator)->f64
             else
             {
                 c.num1/c.num2
+            }
+        }
+        Operation::Rem=>
+        {
+             if c.num2==0.0
+            {
+                println!("\n{}","Error: Second Number is 0".red().bold());
+                return 0.0
+            }
+            else
+            {
+                c.num1%c.num2
             }
         }
     }
@@ -71,6 +83,7 @@ fn main()
     println!("\n                               [ {} ]","[➖] Sub (➖)".red().bold());
     println!("\n                               [ {} ]","[✖️ ] Mul (✖️ )".red().bold());
     println!("\n                               [ {} ]","[➗] Div (➗)".red().bold());
+    println!("\n                               [ {}]","[％] Rema (％)".red().bold());
     let mut choice=String::new();
     io::stdin().read_line(&mut choice).unwrap();
     let string1=choice.trim();
@@ -91,6 +104,10 @@ fn main()
         "Div"|"/"=>
         {
             Operation::Div 
+        }
+        "Rem"|"%"=>
+        {
+            Operation::Rem
         }
         _ =>
         {
