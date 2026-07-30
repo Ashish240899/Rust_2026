@@ -41,8 +41,8 @@ fn calculate(c:Calculator)->f64
 }
 fn main()
 {
-    println!("\n               [ {} ]","Welcome To CLI Calculator For Simple Calculation.".green().bold());
-    println!("\n                              [ {} ]","Enter First Number".green().bold());
+    println!("\n               [ {} ]","🚀 Welcome To CLI Calculator 🧮 For Simple Calculation.".green().bold());
+    println!("\n                              [ {} ]","Enter 1️⃣  Number".green().bold());
     let mut a=String::new();
     io::stdin().read_line(&mut a).unwrap();
     let number1:f64=match a.trim().parse()
@@ -50,11 +50,11 @@ fn main()
         Ok(num)=>num,
         Err(_)=>
         {
-            println!("\n{}","Error: Invalid First Number ".red().bold());
+            println!("\n{}","Error: Invalid First Number 👎🏻".red().bold());
             return;
         }
     };
-    println!("\n                              [ {} ]","Enter Second Number ".green().bold());
+    println!("\n                              [ {}]","Enter 2️⃣  Number ".green().bold());
     let mut b=String::new();
     io::stdin().read_line(&mut b).unwrap();
     let number2:f64=match b.trim().parse()
@@ -62,15 +62,15 @@ fn main()
         Ok(num)=>num,
         Err(_)=>
         {
-            println!("\n{}","Error: Invalid Second Number".red().bold());
+            println!("\n{}","Error: Invalid Second Number 👎🏻".red().bold());
             return;
         }
     };
-    println!("\n                                   [ {} ]","OPERATION".green().bold());
-    println!("\n                                  [ {} ]","[+] Add (+)".red().bold());
-    println!("\n                                  [ {} ]","[-] Sub (-)".red().bold());
-    println!("\n                                  [ {} ]","[*] Mul (*)".red().bold());
-    println!("\n                                  [ {} ]","[/] Div (/)".red().bold());
+    println!("\n                                 [ {} ]","OPERATION".green().bold());
+    println!("\n                               [ {} ]","[➕] Add (➕)".red().bold());
+    println!("\n                               [ {} ]","[➖] Sub (➖)".red().bold());
+    println!("\n                               [ {} ]","[✖️ ] Mul (✖️ )".red().bold());
+    println!("\n                               [ {} ]","[➗] Div (➗)".red().bold());
     let mut choice=String::new();
     io::stdin().read_line(&mut choice).unwrap();
     let string1=choice.trim();
@@ -94,7 +94,7 @@ fn main()
         }
         _ =>
         {
-            println!("\n{}","Error: Invalid OPERATION".red().bold());
+            println!("\n{}","Error: Invalid OPERATION 👎🏻".red().bold());
             return;
         }
     };
@@ -104,5 +104,5 @@ fn main()
     };
     let result=calculate(c1);
     let result:String=result.to_string();
-    println!("\n                                   =={}",result.green().bold());
+    println!("\n                               [    🟰  {}      ]",result.green().bold());
 }
