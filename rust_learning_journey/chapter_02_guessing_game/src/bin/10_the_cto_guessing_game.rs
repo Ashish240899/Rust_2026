@@ -4,8 +4,8 @@ use rand::RngExt;
 fn main()
 {
     let secret_number=rand::rng().random_range(1..100);
-    println!("->Welcome to NUMBER GUESSING GAME<-");
-    println!("Machine has a random number from range 1 to 100!");
+    println!("Welcome 🚀 to number guessing game 🎮 !");
+    println!("Machine 📠 has a random number 🔢 from range 1 to 100! ");
     loop
     {
         println!("\nEnter Your Guess [1..=100]");
@@ -16,22 +16,22 @@ fn main()
             Ok(num)=>num,
             Err(_)=>
             {
-                println!("Invalid input!"); continue;
+                println!("Invalid input 👎!"); continue;
             }
         };
         match number.cmp(&secret_number)
         {
             Ordering::Less=>
             {
-                println!("\nThis is small!");
+                println!("\nThis is small 🤏🏻!");
             }
             Ordering::Greater=>
             {
-                println!("\nThis is big!");
+                println!("\nThis is big ⭕!");
             }
             Ordering::Equal=>
             {
-                println!("\n------------->\nPerfect you WIN!\n<-------------\n\n");
+                println!("\n------------->\n🔥Perfect👍🏻 you WIN 💯!\n<-------------\n\n");
                 break;
             }
         }
