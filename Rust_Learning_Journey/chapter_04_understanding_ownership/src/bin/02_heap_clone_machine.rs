@@ -1,4 +1,4 @@
-//02_heap_cloner
+//02_heap_clone_machine
 fn main()
 {
     let s1=String::from("Car 27XPT9002");
