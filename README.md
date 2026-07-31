@@ -8,38 +8,39 @@ Every line of code in this repository is brutally reviewed, memory-safe (zero pa
 
 ---
 
-## 🏗️ The 3-Phase Architecture Roadmap
+## 🏗️ The Architecture Roadmap
 
-This repository is strictly divided into three progressively complex engineering phases, transitioning from low-level memory handling to high-concurrency backend servers.
+This root repository (`project_phoenix_rust`) is divided into distinct engineering phases. Here is the exact internal directory structure:
 
 ### 🟢 PHASE 01: Rust Foundation & CLI Tools
-**Status:** Deployed & Refactored 
-The foundation of Ownership, Borrowing, Lifetimes, and Enums. 
+**Directory:** `phase_01_rust_foundation_and_cli_tools`
+The hardcore foundation of Ownership, Borrowing, Lifetimes, and Enums implemented through real-world terminal applications. 
 *   **`cli_calculator`**: A crash-proof terminal calculator using strict error handling.
-*   **`guessing_game`**: Core logic implementation with `match` control flows.
-*   **`tic_tac_toe`**: Advanced array slicing and state management.
+*   **`guessing_game`**: Core logic implementation with `match` control flows and external crates.
+*   **`password_manager`**: A secure, memory-safe CLI tool for handling and storing credentials.
+*   **`tic_tac_toe`**: Advanced array slicing, matrix handling, and game state management.
+*   **`todo_cli`**: Command-line task tracking focusing on persistent File I/O operations.
 
 ### 🟡 PHASE 02: Advanced Rust & Backend Basics
-**Status:** In Active Development 
-Transitioning from terminal to the network layer. 
-*   **`web_server`**: Multi-threaded HTTP server built from scratch.
-*   **`database_api`**: RESTful routing and CRUD operations.
-*   **`error_handling_architecture`**: Hardcore `Result` and `Option` implementations for zero-panic runtime.
+**Directory:** `phase_02_advanced_rust_and_backend_basics`
+Transitioning from local terminal operations to the hardcore network layer. 
+*   **`basic_web_server`**: A foundational, multi-threaded HTTP server built entirely from scratch.
+*   **`database_api`**: Implementing RESTful routing and robust database connections.
+*   **`dynamic_table_server`**: Serving and rendering dynamic data tables over HTTP.
+*   **`web_calculator`**: Porting local CLI calculator logic to a network-based backend architecture.
+*   **`wiki_search`**: Fetching, parsing, and processing real-time data from external APIs.
 
 ### 🔴 PHASE 03: The Mega Projects (Enterprise Readiness)
-**Status:** Scheduled (Monk Mode Preparation)
-The ultimate 1.5Cr+ CTO-level portfolio deployment.
-1.  **Custom CLI Search Engine**: Low-level, high-speed file traversal tool.
-2.  **Fast API Web Server**: URL shortener tightly coupled with a PostgreSQL database.
-3.  **Real-Time Network Chat Server**: Handling concurrent multi-user socket connections using asynchronous Rust.
+*(Project architecture and details will be deployed here once Phase 02 is 100% completed and Monk Mode preparation is finished).*
 
 ---
 
 ## 📚 The Grimoire: `rust_learning_journey`
-A dedicated workspace for microscopic, A-to-Z mastery of **The Rust Programming Language (Official Book)**. 
-*   Strictly strictly one concept at a time.
-*   Contains 10+ granular practice programs for every single chapter.
-*   Focuses heavily on `Structs`, `Traits`, `Generics`, and the `Borrow Checker`.
+A dedicated, isolated workspace for microscopic, A-to-Z mastery of **The Rust Programming Language (Official Book)**. 
+*   Strictly learning and implementing **one concept at a time**.
+*   Contains a minimum of **10+ granular, crash-proof practice programs** for every single chapter.
+*   Deeply focuses on internal compiler mechanics: `Structs`, `Traits`, `Generics`, and the `Borrow Checker`.
+*   Acts as the ultimate testing ground before any code is approved for Phase 01 or Phase 02.
 
 ---
 
