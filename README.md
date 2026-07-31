@@ -46,7 +46,7 @@ A dedicated, isolated workspace for microscopic, A-to-Z mastery of **The Rust Pr
 
 ## ⚙️ Tech Stack & Arsenal
 *   **Core:** Rust (Stable)
-*   **Systems:** Linux CLI, Git, GitHub
+*   **Systems:** Window 11 pro CLI, Git, GitHub
 *   **Data:** PostgreSQL, JSON
 *   **Protocols:** HTTP, TCP/IP, REST APIs
 
