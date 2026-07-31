@@ -10,7 +10,8 @@ This repository is the central command hub for mastering "The Rust Programming L
 *   **Chapter 02: Programming a Guessing Game** - Mutability (`mut`), External Crates (`rand`), Pattern Matching (`match`), and Memory-safe Parsing.
 *   **Chapter 03: Common Programming Concepts** - Variables & Shadowing, Scalar/Compound Data Types, Functions, and strict Control Flow (`if`, `loop`, `while`, `for`).
 *   **Chapter 04: Understanding Ownership** - The core of Rust. Stack vs Heap, Move Semantics, Deep Copy (`clone`), Borrowing (`&`, `&mut`), Dangling References, and String Slices.
-*   *(Chapter 05 and more chapters unlocking soon...)*
+*   **Chapter 05: Using Structs to Structure Related Data** - Custom Data Types, Tuple/Unit Structs, Update Syntax (`..`), `#[derive(Debug)]`, Methods (`&self`, `&mut self`), and Associated Functions (`::`).
+*   *(Chapter 06 and more chapters unlocking soon...)*
 
 🔒 **Enterprise Standard**
 
