@@ -11,7 +11,8 @@ This repository is the central command hub for mastering "The Rust Programming L
 *   **Chapter 03: Common Programming Concepts** - Variables & Shadowing, Scalar/Compound Data Types, Functions, and strict Control Flow (`if`, `loop`, `while`, `for`).
 *   **Chapter 04: Understanding Ownership** - The core of Rust. Stack vs Heap, Move Semantics, Deep Copy (`clone`), Borrowing (`&`, `&mut`), Dangling References, and String Slices.
 *   **Chapter 05: Using Structs to Structure Related Data** - Custom Data Types, Tuple/Unit Structs, Update Syntax (`..`), `#[derive(Debug)]`, Methods (`&self`, `&mut self`), and Associated Functions (`::`).
-*   *(Chapter 06 and more chapters unlocking soon...)*
+*   **Chapter 06: Enums and Pattern Matching** - Custom Enum variants, Anonymous Structs within Enums, The `Option<T>` Enum for Null Safety, Exhaustive `match` Control Flow, and `if let` syntax.
+*   *(Chapter 07 and more chapters unlocking soon...)*
 
 🔒 **Enterprise Standard**
 
