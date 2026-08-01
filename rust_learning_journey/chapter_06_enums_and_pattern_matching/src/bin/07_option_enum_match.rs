@@ -8,14 +8,13 @@ fn plus_one(x:Option<i32>)->Option<i32>
         None=>
         {
             println!("This is none");
-            return None;
+            None
         }
     }
 }
 fn main()
 {
     let a:Option<i32>=Some(32);
-    let b=None;
     let i=plus_one(a);
     println!("I={:?}",i);
 
