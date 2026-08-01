@@ -6,7 +6,7 @@ enum Coin
     Penny,
     Nickel,
     Dime,
-    Quater,
+    Quarter,
 }
 impl Coin
 {
@@ -17,7 +17,7 @@ impl Coin
             Coin::Penny=>1,
             Coin::Nickel=>5,
             Coin::Dime=>10,
-            Coin::Quater=>25,
+            Coin::Quarter=>25,
         }
     }
 }
