@@ -3,5 +3,27 @@
 #[allow(dead_code)]
 enum UsState
 {
-    //have to write later
+    Alaska,
+    Alabama,
+}
+#[allow(dead_code)]
+enum Coin
+{
+    Penny,
+    Quarter(UsState),
+}
+fn main()
+{
+    let c=Coin::Quarter(UsState::Alaska);
+    match c
+    {
+        Coin::Penny=>
+        {
+            println!("This is a penny");
+        }
+        Coin::Quarter(state)=>
+        {
+            println!("This quarter belongs to {:?} state",state);
+        }
+    }
 }
