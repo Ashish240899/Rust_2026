@@ -1,6 +1,6 @@
 //04_struct_privacy
 mod ecommerce
-{
+{ 
     pub struct UserAccount
     {
         pub username:String,
