@@ -12,8 +12,8 @@ This repository is the central command hub for mastering "The Rust Programming L
 *   **Chapter 04: Understanding Ownership** - The core of Rust. Stack vs Heap, Move Semantics, Deep Copy (`clone`), Borrowing (`&`, `&mut`), Dangling References, and String Slices.
 *   **Chapter 05: Using Structs to Structure Related Data** - Custom Data Types, Tuple/Unit Structs, Update Syntax (`..`), `#[derive(Debug)]`, Methods (`&self`, `&mut self`), and Associated Functions (`::`).
 *   **Chapter 06: Enums and Pattern Matching** - Custom Enum variants, Anonymous Structs within Enums, The `Option<T>` Enum for Null Safety, Exhaustive `match` Control Flow, and `if let` syntax.
-*   *(Chapter 07 and more chapters unlocking soon...)*
-
+* **Chapter 07: Managing Growing Projects with Packages, Crates, and Modules** - Cargo Packages vs Crates (Binary/Library), Scope & Privacy Rules (`pub`, `mod`), Path Navigation (`crate::`, `super::`), Aliasing & Re-exporting (`use`, `as`, `pub use`), and Multi-File Enterprise Architecture.
+* *(Chapter 08 and more chapters unlocking soon...)*
 🔒 **Enterprise Standard**
 
 All code pushed to this repository acts strictly under the CTO-Level Pipeline. Every binary follows `snake_case` naming conventions, utilizes `match`/`Result` for edge cases, and is 100% memory-safe with zero panics. The journey to the 1.5Cr-3Cr+ CTO Vision starts here. 🟢
