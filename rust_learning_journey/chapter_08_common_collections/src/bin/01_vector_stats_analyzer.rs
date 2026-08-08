@@ -19,6 +19,11 @@ fn main()
         }
     }
     let length=numbers.len();
+    if length==0
+    {
+        println!("No numbers are entered");
+        return;
+    }
     let length=length as i32;
     let mut sum=0;
     for i in &numbers
