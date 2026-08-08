@@ -1,4 +1,4 @@
-//02_big_latin_convertor
+//02_pig_latin_convertor
 use std::io::Write;
 fn main()
 {
@@ -15,7 +15,7 @@ fn main()
     }
     else
     {
-        let pig_latin=format!("{}-{}ay",&word[1..],first_letter);
+        let pig_latin=format!("{}-{}ay",word.chars().skip(1).collect::<String>(),first_letter);
         println!("Pig latin={}",pig_latin);
     }
 }
